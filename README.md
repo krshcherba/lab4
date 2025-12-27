@@ -123,7 +123,7 @@
 отрицательные	числа	стали	положительными,	а	положительные	остались	без	изменений
 3. Передайте	 в	 метод	 список	 состоящий	 из	 массивов	 целых	 чисел,	 а	 получите	 список	 в	котором	будут	только	максимальные	значения	каждого	из	исходных	массивов.
 ### Алгоритм решения
-public static <T, P> List<P> func(List<T> list1, Function<T, P> mapper) {
+    public static <T, P> List<P> func(List<T> list1, Function<T, P> mapper) {
         List<P> list2 = new ArrayList<>();
 
         for (T t : list1) {
@@ -146,7 +146,7 @@ public static <T, P> List<P> func(List<T> list1, Function<T, P> mapper) {
 3. Передайте	 в	 метод	 список	 состоящий	 из	 массивов	 целых	 чисел,	 а	 получите	 список	 в	
 котором	будут	только	те	массивы,	в	которых	нет	ни	одного	положительного	элемента.
 ### Алгоритм решения
-public static <T> List<T> filter(List<T> list1, Predicate<T> mapper) {
+    public static <T> List<T> filter(List<T> list1, Predicate<T> mapper) {
         List<T> list2 = new ArrayList<>();
 
         for (T t : list1) {
@@ -175,7 +175,7 @@ public static <T> List<T> filter(List<T> list1, Predicate<T> mapper) {
 гарантированно	не	возвращал	null и	не	выбрасывал	ошибок	в	том	случае,	если	исходный	список	
 пуст.
 ### Алгоритм решения
-public static <T> T concat(List<T> list1, Function<List<T>,T> mapper) {
+    public static <T> T concat(List<T> list1, Function<List<T>,T> mapper) {
         T res = list1.get(0);
 
         for (int i = 1; i < list1.size(); i++) {
