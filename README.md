@@ -24,24 +24,24 @@
 какой-либо	метод,	извлеките	значение,	и	выведите	его	на	экран.	Альтернативой	должна	
 быть	строка	“hello world”.
 ### Алгоритм решения
-package ru.ablaeva.model;
+    package ru.ablaeva.model;
 
-public final class Storage<T> {
-    private final T object;
+    public final class Storage<T> {
+        private final T object;
 
-    public Storage(T object) {
-        this.object = object;
+        public Storage(T object) {
+            this.object = object;
+        }
+
+        public T get(T defaultValue) {
+            return (this.object != null) ? this.object : defaultValue;
+        }
+
+        @Override
+        public String toString() {
+            return (this.object != null) ? this.object.toString() : "n/a";
+        }
     }
-
-    public T get(T defaultValue) {
-        return (this.object != null) ? this.object : defaultValue;
-    }
-
-    @Override
-    public String toString() {
-        return (this.object != null) ? this.object.toString() : "n/a";
-    }
-}
 
 ## Задача 5
 ### Обобщенная линия
@@ -53,43 +53,43 @@ public final class Storage<T> {
 • Граница	стирания	не	может	быть	хуже	двумерной	точки.
 Создайте	и	выведите	на	экран	произвольную	линию	в	трехмерном	пространстве.
 ### Алгоритм решения
-package ru.ablaeva.geometry;
+    package ru.ablaeva.geometry;
 
-import java.util.Objects;
+    import java.util.Objects;
 
-public class Line<P> implements Cloneable {
-    private P A, B;
+    public class Line<P> implements Cloneable {
+        private P A, B;
 
-    // создание линии через 2 точки
-    public Line(P A, P B) {
-        this.A = A;
-        this.B = B;
+        // создание линии через 2 точки
+        public Line(P A, P B) {
+            this.A = A;
+            this.B = B;
+        }
+
+        // получение точек начала A и конца B линии
+        public P getStart() { 
+            return A; 
+        }
+
+        public P getEnd() { 
+            return B; 
+        } 
+
+        // изменение координат точек
+        public void setStart(P start) { 
+            this.A = start; 
+        }
+
+        public void setEnd(P end) { 
+            this.B = end; 
+        }
+
+        // вывод текстового представления сущности Линия
+        @Override
+        public String toString() {
+            return "Линия от " + A + " до " + B;
+        }
     }
-
-    // получение точек начала A и конца B линии
-    public P getStart() { 
-        return A; 
-    }
-
-    public P getEnd() { 
-        return B; 
-    } 
-
-    // изменение координат точек
-    public void setStart(P start) { 
-        this.A = start; 
-    }
-
-    public void setEnd(P end) { 
-        this.B = end; 
-    }
-
-    // вывод текстового представления сущности Линия
-    @Override
-    public String toString() {
-        return "Линия от " + A + " до " + B;
-    }
-}
 
 # Задание 2
 ## Задача 1
