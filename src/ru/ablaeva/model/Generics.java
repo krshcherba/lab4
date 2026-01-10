@@ -52,15 +52,18 @@ public class Generics<T,P> {
     public static void main(String[] args) {
         List<String> strings = List.of("qwerty", "asdfg", "zx");
         System.out.println("Массив strings: " + strings);
+        System.out.println("N 3-1-1:");
         List<Integer> lengths = func(strings, new Function<String, Integer>() {
             @Override
             public Integer apply(String s) {
                 return s.length();
             }
         });
+        System.out.println(lengths);
 
         List<Integer> nums = List.of(1, -3, 7);
         System.out.println("Массив nums: " + nums);
+        System.out.println("N 3-1-2:");
         List<Integer> abs = func(nums, new Function<Integer, Integer>() {
             @Override
             public Integer apply(Integer n) {
@@ -68,9 +71,11 @@ public class Generics<T,P> {
                 return Math.abs(n); 
             }
         });
+        System.out.println(abs);
 
         List<List<Integer>> nums2 = List.of(List.of(1, 0, 5), List.of(-4, -3, -1), List.of(6, 7, 3));
         System.out.println("Массив nums2: " + nums2);
+        System.out.println("N 3-1-3:");
         List<Integer> get_max = func(nums2, new Function<List<Integer>, Integer>() {
             @Override
             public Integer apply(List<Integer> l) {
@@ -81,13 +86,19 @@ public class Generics<T,P> {
                 return max;
             }
         });
+        System.out.println(get_max);
 
+        System.out.println("N 3-2-1: ");
         Predicate<String> test2 = str -> str.length() < 3;
         List<String> filter_var = filter(strings, test2);
+        System.out.println(filter_var);
 
+        System.out.println("N 3-2-2:");
         Predicate<Integer> test3 = n -> n > 0;
         List<Integer> filter_pos_nums = filter(nums, test3);
+        System.out.println(filter_pos_nums);
 
+        System.out.println("N 3-2-3: ");
         Predicate<List<Integer>> test4 = list4 -> {
             for (int num : list4) {
                 if (num > 0) {
@@ -97,18 +108,8 @@ public class Generics<T,P> {
             return true; 
         };
         List<List<Integer>> filter_unpos_nums = filter(nums2, test4);
-
-        // String concat_res = concat(strings, );
-        
-        System.out.println();
-        System.out.println(lengths);
-        System.out.println(abs);
-        System.out.println(get_max);
-
-        System.out.println(filter_var);
-        System.out.println(filter_pos_nums);
         System.out.println(filter_unpos_nums);
 
-
+        // String concat_res = concat(strings, );
     }
 }
