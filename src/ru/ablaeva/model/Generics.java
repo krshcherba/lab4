@@ -2,6 +2,7 @@ package ru.ablaeva.model;
 
 import java.util.function.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.lang.Math;
 
@@ -29,24 +30,24 @@ public class Generics<T,P> {
         return list2;
     }
 
-    // public static <T> T concat(List<T> list1, Function<List<T>,T> mapper) {
-    //     T res = list1.get(0);
+    public static <T> T concat(List<T> list1, Function<List<T>,T> mapper) {
+        T res = mapper.apply(list1);
+        return res;
+    }
 
-    //     for (int i = 1; i < list1.size(); i++) {
-    //         res = mapper.apply(res, list1.get(i));
-    //     }
-
-    //     return res;
-    // }
-
-    public static <T, P> List<P> collect(List<T> list1, Function<T, P> mapper) {
-        List<P> list2 = new ArrayList<>();
-
-        for (T t : list1) {
-            list2.add(mapper.apply(t));
+    public static <T, P extends Collection<T>> P collect(
+            List<T> sourceList,
+            Supplier<P> collectionCreator,
+            Function<T, T> valueTransformer) {
+        
+        P resultCollection = collectionCreator.get();
+        
+        for (T item : sourceList) {
+            T transformedValue = valueTransformer.apply(item);
+            resultCollection.add(transformedValue);
         }
-
-        return list2;
+        
+        return resultCollection;
     }
 
     public static void main(String[] args) {
